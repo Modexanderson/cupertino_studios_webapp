@@ -1,0 +1,434 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Select Your OS
+{% endblock %}
+
+{% block content %}
+  <style>
+    body,
+    h1,
+    h2,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
+    }
+    
+    .container {
+      text-align: center;
+      margin: 0 auto;
+      padding-left: 100px;
+      padding-right: 100px;
+    }
+    
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 10px 0;
+      text-align: center;
+    }
+    
+    header a {
+      text-decoration: none;
+    }
+    
+    .app-info {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+    
+    .app-logo img {
+      max-width: 150px;
+    }
+    
+    .app-details {
+      margin-left: 20px;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .app-details h1 {
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 10px;
+    }
+    
+    .app-details a {
+      fomargin: 0;
+      font-weight: bold;
+    }
+    
+    .install-now h2 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+      margin-top: 40px;
+    }
+    
+    .row-content {
+      display: flex; /* Use flexbox for the content */
+      align-items: center; /* Center content vertically */
+      flex: 1; /* Allow content to take available space */
+      justify-content: space-evenly; /* Add space between items */
+      padding: 10px; /* Adjust the padding as needed */
+    }
+    
+    .card img {
+      height: 660px;
+    }
+    
+    .card {
+      text-align: center;
+      background: #f3f3f3;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex; /* Use flexbox to arrange items horizontally */
+      align-items: center; /* Center items vertically */
+    }
+    
+    .os-row-content {
+      display: flex; /* Use flexbox for the content */
+      align-items: center; /* Center content vertically */
+      justify-content: center;
+      flex: 1; /* Allow content to take available space */
+      padding: 10px; /* Adjust the padding as needed */
+    }
+    
+    .os-card {
+      text-align: center;
+      background: #f3f3f3;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+    
+    .os-card img {
+      max-width: 100px;
+      margin: 20px;
+    }
+
+    a {
+      color: #007aff;
+      text-decoration: none;
+    }
+    
+    .os-card a {
+      
+      text-decoration: none;
+    }
+    
+    .ios-version {
+      text-align: center;
+      font-style: italic;
+      font-weight: 300;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+    
+    .stores-listed h2 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .store-buttons {
+      display: flex;
+      justify-content: center;
+      margin: 20px 0;
+    }
+    
+    .store-button {
+      text-align: center;
+      margin: 0 10px;
+    }
+    
+    .store-button img {
+      max-width: 100px;
+    }
+    
+    .store-button p {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+
+    .highlights, .stores-listed, .install-now, .sleek-interface {
+      margin-top: 100px;
+      margin-bottom: 100px;
+    }
+
+    .highlight-container {
+      display: flex;
+      flex-direction: column; /* Stack children in a column */
+      align-items: flex-start; /* Align children to the start (left) */
+    }
+
+    .highlight-item {
+      display: flex; /* Display its children in a row */
+      text-align: left;
+      margin-bottom: 50px;
+      align-items: center; /* Center vertically */
+    }
+    
+    .highlight-item i {
+      margin-right: 10px; /* Add some spacing between the <i> and the <h1> */
+        vertical-align: middle;
+    }
+    .highlight-item h3 {
+      margin: 0; /* Remove any default margins */
+    }
+    
+    .highlights h2 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    .highlight-features {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px 0;
+    }
+    
+    .highlight-feature {
+      flex: 1;
+      text-align: center;
+    }
+    
+    .highlight-feature i {
+      font-size: 36px;
+      color: #f0ad4e; /* Icon color */
+    }
+    
+    .highlight-feature h3 {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    .sleek-interface h2 {
+      font-size: 36px;
+      font-weight: bold;
+      text-align: center;
+    }
+    
+
+    .sleek-interface-image {
+      background: #f3f3f3;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 100%;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      
+    }
+    
+    .sleek-interface-image img {
+      width: 100%;
+      border-radius: 8px;
+    }
+    
+    /* Media query for responsiveness */
+    @media (max-width: 600px) {
+      .app-info {
+        flex-direction: column;
+        text-align: center;
+      }
+    
+      .app-logo img {
+        max-width: 100%;
+      }
+    }
+    
+    /* Animations */
+    /* CSS animations for the fade and size animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+    
+    @keyframes grow {
+      from {
+        transform: scale(0);
+      }
+      to {
+        transform: scale(1);
+      }
+    }
+    
+    .fade-in {
+      animation: fadeIn 2s ease-in;
+    }
+    
+    .grow {
+      animation: grow 2s ease-in;
+    }
+    
+    /* For sliding animations */
+    @keyframes slideInFromLeft {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes slideInFromRight {
+      from {
+        transform: translateX(100%);
+      }
+      to {
+        transform: translateX(0);
+      }
+    }
+    
+    .slide-left {
+      animation: slideInFromLeft 2s ease-in;
+    }
+    
+    .slide-right {
+      animation: slideInFromRight 2s ease-in;
+    }
+  </style>
+  <div class="container">
+    <div class="app-info">
+      <div class="app-logo">
+        <img src="your-app-logo.jpg" alt="App Logo" />
+      </div>
+      <div class="app-details">
+        <a href="{% url 'index' %}">Home</a>
+        <a href="{{ app.privacyPolicyUrl }}" target="_blank">Privacy Policy</a>
+      </div>
+    </div>
+    <div>
+      <div class="card">
+        <div class="row-content">
+          <h1>{{ app.shortDescription }}</h1>
+          <img src="{{ app.app_image }}" alt="App Image" />
+        </div>
+      </div>
+    </div>
+
+    <div class="install-now">
+      <h2>Install Now!</h2>
+    </div>
+
+    {% for os, logo_url in app.os_logos.items %}
+      <div class="os-card">
+        <a href="{% url 'app_detail' app_id=app.id os=os %}" class="os-card-button">
+          <div class="os-row-content">
+            <img src="{{ logo_url }}" alt="{{ os }} Logo" />
+            <h2>{{ os }}</h2>
+          </div>
+        </a>
+      </div>
+      <!-- Add more OS buttons here -->
+    {% endfor %}
+
+    <div class="ios-version">
+      <p>iOS version in development</p>
+    </div>
+
+    <div class="stores-listed">
+      <h2>Stores Listed!</h2>
+    </div>
+
+    <div class="os-card">
+      <a href="{{ app.playStoreUrl }}" class="os-card-button" target="_blank">
+        <div class="os-row-content">
+          <img src="https://firebasestorage.googleapis.com/v0/b/cupertino-studios-website.appspot.com/o/play_store.png?alt=media&token=a44e3ad9-2b2c-455e-bcae-229f8fbf60a7" />
+          <h2>Google Play Store</h2>
+        </div>
+      </a>
+    </div>
+
+    <div class="os-card">
+      <a href="{{ app.appGalleryUrl }}" class="os-card-button" target="_blank">
+        <div class="os-row-content">
+          <img src="https://firebasestorage.googleapis.com/v0/b/cupertino-studios-website.appspot.com/o/huawei-appgallery.png?alt=media&token=5a1ca6e0-cff6-4a49-9cbd-2edc20a06aab" />
+          <h2>Huawei AppGallery</h2>
+        </div>
+      </a>
+    </div>
+
+    <div class="highlights">
+      <h2>Highlights</h2>
+    </div>
+
+    <div>
+      <div class="card">
+        <div class="row-content">
+          <img src="{{ app.phoneImage }}" alt="Phone Image" />
+          <div class="highlight-container">
+
+            <div class="highlight-item">
+              <div>
+                <i class="{{app.highlightsIcon1}}"></i>
+              </div>
+              <div>
+                <h3>{{ app.highlightsTitle1 }}</h3>
+                <p>{{ app.highlightsDescrition1 }}</p>
+              </div>
+            </div>
+            <div class="highlight-item">
+  
+              <div>
+                <i class="{{ app.highlightsIcon2 }}"></i>
+              </div>
+              <div>
+
+                <h3>{{ app.highlightsTitle2 }}</h3>
+                <p>{{ app.highlightsDescrition2 }}</p>
+              </div>
+              
+              
+            </div>
+            <div class="highlight-item">
+  
+              <div>
+                <i class="{{ app.highlightsIcon3 }}"></i>
+              </div>
+              <div>
+
+                <h3>{{ app.highlightsTitle3 }}</h3>
+                <p>{{ app.highlightsDescrition3 }}</p>
+              </div>
+              
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <div class="sleek-interface">
+    <h2>Sleek Interface</h2>
+  </div>
+
+  
+</div>
+  <div class="sleek-interface-image">
+    <img src="{{ app.featureImage }}" alt="Sleek Interface" />
+  </div>
+{% endblock %}

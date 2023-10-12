@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="app-list">
+    <h1>Cupertino App Showcase</h1>
+    <div class="featured-apps-container">
+      <div class="featured-apps">
+        {% for app in apps %}
+          <a href="{% url 'os_selection' app.id %}">
+            <div class="cupertino-card">
+              <img src="{{ app.icon.url }}" alt="{{ app.name }} Icon" class="cupertino-icon" />
+              <h3>{{ app.name }}</h3>
+            </div>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      {% block title %}
+        Cupertino Studios
+      {% endblock %}
+    </title>
+
+    <!-- Cupertino-style CSS (You may need to link to your own CSS file or framework) -->
+    <link rel="stylesheet" href="path-to-your-cupertino-css-file.css" />
+
+    <!-- Optional: Add a custom favicon -->
+    <link rel="icon" href="path-to-your-favicon.ico" type="image/x-icon" />
+
+    <!-- Optional: Add custom fonts if needed -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <!-- Optional: Add any additional CSS imports specific to your project -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  </head>
+  <style>
+    /* Reset default styles and apply Cupertino font */
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .app-building-card {
+      text-align: center;
+      background: #f3f3f3;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    
+      display: inline-block; /* Use inline-block to match the size of its content */
+    }
+    
+    .app-building-card p {
+      font-size: 16px;
+      color: #555; /* Adjust text color as needed */
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    /* Define button styles */
+    .contact-button {
+      display: inline-block;
+      background-color: #007bff; /* Button background color */
+      color: #fff; /* Button text color */
+      padding: 10px 20px; /* Button padding */
+      border: none;
+      border-radius: 5px; /* Button border radius */
+      text-decoration: none; /* Remove default link underline */
+      cursor: pointer;
+    }
+    
+    .contact-button:hover {
+      background-color: #0056b3; /* Button background color on hover */
+    }
+    
+    .container {
+      text-align: center;
+      margin: 0 auto;
+    }
+    
+    .centered-image {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .centered-image img {
+      width: 100%;
+      filter: blur(3px);
+    }
+    
+    .centered-text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.8);
+      padding: 20px;
+      border-radius: 8px;
+    }
+    
+    .centered-text p {
+      font-size: 16px;
+      color: #555; /* Adjust text color as needed */
+      font-weight: bold;
+      text-align: center;
+    }
+    
+    @media (min-width: 700px) {
+      .centered-text p {
+        font-size: 25px;
+      }
+    }
+    
+    /* Cupertino-style navigation bar */
+    .cupertino-navbar {
+      background-color: #007aff; /* Cupertino blue */
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .cupertino-navbar a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+    
+    /* Cupertino-style buttons */
+    .cupertino-button {
+      background-color: #007aff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    
+    .cupertino-button:hover {
+      background-color: #0056b3; /* Slightly darker blue on hover */
+    }
+    
+    /* Cupertino-style cards */
+    .cupertino-card {
+      text-align: center;
+      background: #f3f3f3;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      width: 250px;
+      background-color: white;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      padding: 20px;
+      margin: 20px;
+    }
+    
+    /* Cupertino-style icons */
+    .cupertino-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 15px;
+    }
+    
+    /* Cupertino-style footer */
+    .cupertino-footer {
+      text-align: center;
+      padding: 20px 0;
+      background-color: #f4f4f4;
+    }
+    
+    .cupertino-homepage {
+      text-align: center;
+      padding: 20px;
+    }
+    
+    .featured-apps-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+    
+    .featured-apps {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+  </style>
+  <body>
+    <header>
+      <nav class="cupertino-navbar">
+        <div class="cupertino-navbar-title">
+          {% if is_os_selection_page or is_app_detail_page or is_app_list_page %}
+            <a href="javascript:history.back();" class="cupertino-back-button"><i class="material-icons">arrow_back_ios</i></a>
+          {% else %}
+            <a href="{% url 'index' %}"><img src="/static/images/logo-no-background.png" style="max-width: 50px;" alt="Cupertino Studios Logo" /></a>
+          {% endif %}
+        </div>
+        <div class="cupertino-navbar-items">
+          {% if is_app_detail_page or is_app_list_page %}
+          <a href="{% url 'index' %}">Home</a>
+          {% endif %}
+          <a href="{% url 'app_list' %}">Apps</a>
+          <a href="#">Services</a>
+          <a href="mailto:Cupertinostudios@gmail.com">Contact</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="container">
+        {% block content %}
+          <!-- Specific content for each page will go here -->
+        {% endblock %}
+      </div>
+    </main>
+    <footer>
+      <div class="cupertino-footer">
+        <p>&copy; {{ year|date:'Y' }} Cupertino Studios. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <script>
+      // Initialize variables to keep track of the scrolling state
+      let scrollInterval = null
+      
+      // Function to start continuous scrolling
+      function startScrolling(left) {
+        const imageList = document.getElementById('imageList')
+        const scrollAmount = left ? -300 : 300 // Adjust the scroll amount as needed
+        imageList.scrollBy({
+          left: scrollAmount,
+          behavior: 'smooth'
+        })
+      
+        // Start the interval for continuous scrolling
+        scrollInterval = setInterval(() => {
+          imageList.scrollBy({
+            left: scrollAmount,
+            behavior: 'smooth'
+          })
+        }, 100)
+      }
+      
+      // Function to stop continuous scrolling
+      function stopScrolling() {
+        clearInterval(scrollInterval)
+      }
+      
+      // Add event listeners for the left and right buttons
+      const leftButton = document.getElementById('scrollLeft')
+      const rightButton = document.getElementById('scrollRight')
+      
+      leftButton.addEventListener('mousedown', function () {
+        // When the mouse button is pressed, start continuous scrolling to the left
+        startScrolling(true)
+      })
+      
+      rightButton.addEventListener('mousedown', function () {
+        // When the mouse button is pressed, start continuous scrolling to the right
+        startScrolling(false)
+      })
+      
+      // Add event listeners for mouseup and mouseout to stop scrolling
+      leftButton.addEventListener('mouseup', stopScrolling)
+      leftButton.addEventListener('mouseout', stopScrolling)
+      
+      rightButton.addEventListener('mouseup', stopScrolling)
+      rightButton.addEventListener('mouseout', stopScrolling)
+    </script>
+  </body>
+</html>
