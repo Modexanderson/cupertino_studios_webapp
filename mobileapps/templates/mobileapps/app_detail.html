@@ -2,27 +2,7 @@
 
 {% block content %}
   <style>
-    body,
-    h1,
-    h2,
-    p {
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-    }
-    
-    .container {
-      text-align: center;
-      margin: 0 auto;
-      padding-left: 100px;
-      padding-right: 100px;
-    }
-    
+
     .card {
       text-align: center;
       background: #f3f3f3;
@@ -129,7 +109,7 @@
   }
   
   .screenshot {
-      max-width: 300px; /* Adjust the max width as needed */
+      max-width: 100%; /* Adjust the max width as needed */
       height: auto;
   }
     
@@ -205,7 +185,7 @@
       <div class="app-info">
         <div class="app-content">
           <div class="app-icon-container">
-            <img src="{{ app.icon.url }}" alt="{{ app.name }} Icon" class="app-icon" />
+            <img src="{{ app.icon }}" alt="{{ app.name }} Icon" class="cupertino-icon" />
           </div>
         </div>
 
@@ -221,7 +201,7 @@
         </div>
       </div>
       <div class="app-info">
-        <a href="{{ app.downloadUrl }}" class="install-button">Install</a>
+        <a href="{{ app.downloadUrl }}" class="install-button" id="install-button">Install</a>
       </div>
 
       <div class="card">
@@ -273,5 +253,6 @@
       </div>
     </div>
   </div>
-{% endblock %}
+  {% endblock %}
+  
 

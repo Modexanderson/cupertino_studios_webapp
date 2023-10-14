@@ -61,7 +61,7 @@ class MobileApp(models.Model):
         max_length=200,
     )
     shortDescription = models.CharField(
-        max_length=30,
+        max_length=200,
     )
 
     playStoreUrl = models.URLField(
@@ -92,10 +92,10 @@ class MobileApp(models.Model):
         max_length=200,
     )
     longDescription = models.TextField(
-        max_length=1000,
+        max_length=10000,
     )
     category = models.CharField(
-        max_length=20,
+        max_length=50,
     )
 
     # screenshots = models.ManyToManyField("Screenshot")

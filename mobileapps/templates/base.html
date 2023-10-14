@@ -26,8 +26,23 @@
     /* Reset default styles and apply Cupertino font */
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f0f0f0;
+      color: #333;
       margin: 0;
       padding: 0;
+    }
+
+    h1,
+    h2,
+    p {
+      margin: 0;
+      padding: 0;
+    }
+
+
+    a {
+      color: #007aff;
+      text-decoration: none;
     }
     
     .app-building-card {
@@ -70,7 +85,11 @@
     .container {
       text-align: center;
       margin: 0 auto;
+      padding-left: 100px;
+      padding-right: 100px;
     }
+
+
     
     .centered-image {
       position: relative;
@@ -99,12 +118,31 @@
       font-weight: bold;
       text-align: center;
     }
-    
-    @media (min-width: 700px) {
+
+    /* Media query for responsiveness */
+    @media (max-width: 700px) {
+      .app-info {
+        flex-direction: column;
+        text-align: center;
+        
+      }
+  
+      .app-logo img {
+        max-width: 100%;
+      }
+
       .centered-text p {
         font-size: 25px;
       }
+
+      .container {
+        text-align: center;
+        margin: 0 auto;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
     }
+    
     
     /* Cupertino-style navigation bar */
     .cupertino-navbar {
@@ -156,7 +194,6 @@
     .cupertino-icon {
       width: 80px;
       height: 80px;
-      border-radius: 50%;
       object-fit: cover;
       margin: 0 auto 15px;
     }
@@ -268,6 +305,10 @@
       
       rightButton.addEventListener('mouseup', stopScrolling)
       rightButton.addEventListener('mouseout', stopScrolling)
+
+      document.getElementById("install-button").addEventListener("click", function() {
+        window.open("{{ app.downloadUrl }}", "_blank");
+      });
     </script>
   </body>
 </html>

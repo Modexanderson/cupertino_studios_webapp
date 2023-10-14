@@ -6,19 +6,6 @@
 
 {% block content %}
   <style>
-    body,
-    h1,
-    h2,
-    p {
-      margin: 0;
-      padding: 0;
-    }
-    
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f0f0;
-      color: #333;
-    }
     
     .container {
       text-align: center;
@@ -120,11 +107,6 @@
     .os-card img {
       max-width: 100px;
       margin: 20px;
-    }
-
-    a {
-      color: #007aff;
-      text-decoration: none;
     }
     
     .os-card a {
@@ -244,17 +226,7 @@
       border-radius: 8px;
     }
     
-    /* Media query for responsiveness */
-    @media (max-width: 600px) {
-      .app-info {
-        flex-direction: column;
-        text-align: center;
-      }
     
-      .app-logo img {
-        max-width: 100%;
-      }
-    }
     
     /* Animations */
     /* CSS animations for the fade and size animations */
@@ -280,7 +252,7 @@
       animation: fadeIn 2s ease-in;
     }
     
-    .grow {
+    .app-logo img {
       animation: grow 2s ease-in;
     }
     
@@ -314,7 +286,7 @@
   <div class="container">
     <div class="app-info">
       <div class="app-logo">
-        <img src="your-app-logo.jpg" alt="App Logo" />
+        <img src="{{ app.icon }}" alt="{{ app.name }} Icon" class="cupertino-icon" />
       </div>
       <div class="app-details">
         <a href="{% url 'index' %}">Home</a>
@@ -324,8 +296,8 @@
     <div>
       <div class="card">
         <div class="row-content">
-          <h1>{{ app.shortDescription }}</h1>
-          <img src="{{ app.app_image }}" alt="App Image" />
+          <h1 class="slide-left ">{{ app.shortDescription }}</h1>
+          <img src="{{ app.app_image }}" alt="App Image" class="slide-right"/>
         </div>
       </div>
     </div>
@@ -379,43 +351,46 @@
     <div>
       <div class="card">
         <div class="row-content">
-          <img src="{{ app.phoneImage }}" alt="Phone Image" />
-          <div class="highlight-container">
+          <img src="{{ app.phoneImage }}" alt="Phone Image" class="slide-left "/>
+          <div class="slide-right">
 
-            <div class="highlight-item">
-              <div>
-                <i class="{{app.highlightsIcon1}}"></i>
-              </div>
-              <div>
-                <h3>{{ app.highlightsTitle1 }}</h3>
-                <p>{{ app.highlightsDescrition1 }}</p>
-              </div>
-            </div>
-            <div class="highlight-item">
+            <div class="highlight-container">
   
-              <div>
-                <i class="{{ app.highlightsIcon2 }}"></i>
+              <div class="highlight-item">
+                <div>
+                  <i class="{{app.highlightsIcon1}}"></i>
+                </div>
+                <div>
+                  <h3>{{ app.highlightsTitle1 }}</h3>
+                  <p>{{ app.highlightsDescrition1 }}</p>
+                </div>
               </div>
-              <div>
-
-                <h3>{{ app.highlightsTitle2 }}</h3>
-                <p>{{ app.highlightsDescrition2 }}</p>
-              </div>
-              
-              
-            </div>
-            <div class="highlight-item">
+              <div class="highlight-item">
+    
+                <div>
+                  <i class="{{ app.highlightsIcon2 }}"></i>
+                </div>
+                <div>
   
-              <div>
-                <i class="{{ app.highlightsIcon3 }}"></i>
+                  <h3>{{ app.highlightsTitle2 }}</h3>
+                  <p>{{ app.highlightsDescrition2 }}</p>
+                </div>
+                
+                
               </div>
-              <div>
-
-                <h3>{{ app.highlightsTitle3 }}</h3>
-                <p>{{ app.highlightsDescrition3 }}</p>
+              <div class="highlight-item">
+    
+                <div>
+                  <i class="{{ app.highlightsIcon3 }}"></i>
+                </div>
+                <div>
+  
+                  <h3>{{ app.highlightsTitle3 }}</h3>
+                  <p>{{ app.highlightsDescrition3 }}</p>
+                </div>
+                
+                
               </div>
-              
-              
             </div>
           </div>
         </div>
