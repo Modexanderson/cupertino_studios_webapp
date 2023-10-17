@@ -7,13 +7,7 @@
 {% block content %}
   <style>
     
-    .container {
-      text-align: center;
-      margin: 0 auto;
-      padding-left: 100px;
-      padding-right: 100px;
-    }
-    
+  
     header {
       background-color: #fff;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -68,6 +62,18 @@
       justify-content: space-evenly; /* Add space between items */
       padding: 10px; /* Adjust the padding as needed */
     }
+
+    /* Media query for responsiveness */
+    @media (max-width: 700px) {
+      .row-content-res {
+        display: block; /* Use flexbox for the content */
+        align-items: center; /* Center content vertically */
+        flex: 1; /* Allow content to take available space */
+        justify-content: space-evenly; /* Add space between items */
+        padding: 10px; /* Adjust the padding as needed */
+      }
+        
+      }
     
     .card img {
       height: 660px;
@@ -84,6 +90,8 @@
       display: flex; /* Use flexbox to arrange items horizontally */
       align-items: center; /* Center items vertically */
     }
+
+    
     
     .os-row-content {
       display: flex; /* Use flexbox for the content */
@@ -295,7 +303,7 @@
     </div>
     <div>
       <div class="card">
-        <div class="row-content">
+        <div class="row-content row-content-res">
           <h1 class="slide-left ">{{ app.shortDescription }}</h1>
           <img src="{{ app.app_image }}" alt="App Image" class="slide-right"/>
         </div>
